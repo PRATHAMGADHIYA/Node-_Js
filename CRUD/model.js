@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 
-const studentschema=new mongoose.SchemaType({
+const studentschema=new mongoose.Schema({
     name:String,
     age:Number,
     course:String,
