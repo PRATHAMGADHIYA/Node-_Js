@@ -1,8 +1,9 @@
-const product = require("../models/product.model.js");
+const Product = require("../models/product.model.js");
+
 
 const createProduct = async (req, res) => {
     try {
-        let product = await product.create(req.body);
+        let product = await  Product.create(req.body);
         res.status(201).send(product);
     } catch (error) {
         res.status(500).send({ error: error.message })
@@ -11,7 +12,7 @@ const createProduct = async (req, res) => {
 
 const getProduct = async (req, res) => {
     try {
-        let product = await product.find();
+        let product = await  Product.find();
         res.status(200).send(product);
     } catch (error) {
         res.status(500).send({ error: error.message });
@@ -21,7 +22,7 @@ const getProduct = async (req, res) => {
 const getProductById = async (req, res) => {
     try {
         const { ProductId } = req.params;
-        let product = await product.findById(ProductId)
+        let product = await  Product.findById(ProductId)
         res.status(200).send(product);
     } catch (error) {
         res.status(500).send({ error: error.message });
@@ -31,7 +32,7 @@ const getProductById = async (req, res) => {
 const updateProduct = async (req, res) => {
     try {
         const { ProductId } = req.params;
-        let product = await product.findByIdAndUpdate(ProductId, req.body, { new: true });
+        let product = await  Product.findByIdAndUpdate(ProductId, req.body, { new: true });
         res.status(200).send(product);
     } catch (error) {
         res.status(500).send({ error: error.message });
@@ -41,7 +42,7 @@ const updateProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
     try {
         const { ProductId } = req.params;
-        let product = await product.findByIdAndDelete(ProductId);
+        let product = await  Product.findByIdAndDelete(ProductId);
         res.status(200).send(product);
     } catch (error) {
         res.status(500).send({ error: error.message });
