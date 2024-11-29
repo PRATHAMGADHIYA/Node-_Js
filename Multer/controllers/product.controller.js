@@ -1,7 +1,12 @@
 const Product = require("../models/product.model.js");
 
-
 const createProduct = async (req, res) => {
+    console.log("request",req.file);
+
+    if(req.file){
+        req.body.img=req.file.path;
+    }
+    
     try {
         let product = await  Product.create(req.body);
         res.status(201).send(product);
