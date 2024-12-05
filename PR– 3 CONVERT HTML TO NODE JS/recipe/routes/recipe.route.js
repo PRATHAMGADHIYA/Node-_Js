@@ -1,9 +1,26 @@
-const {Router}=require("express");
-const { createrecipe } = require("../controller/recipe.controller");
+const express = require('express');
+const router = express.Router();
+const recipeController = require('../controller/recipe.controller');
 
-const recipeRoute = Router();
+// Base route
+router.get('/', recipeController.welcome);
 
-recipeRoute.get("/recipe/all",createrecipe);
-recipeRoute.post
+// Recipe listing route
+router.get('/recipe/all', recipeController.getAllRecipes);
 
-module.exports = recipeRoute;
+// Add new recipe
+router.get('/add', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/recipe.html'));
+});
+router.post('/recipe/add', recipeController.addRecipe);
+
+// Update recipe
+router.patch('/recipe/update/:id', recipeController.updateRecipe);
+
+// Delete recipe
+router.delete('/recipe/delete/:id', recipeController.deleteRecipe);
+
+// Filter recipes
+router.get('/recipe/filter', recipeController.filterRecipes);
+
+module.exports = router;
