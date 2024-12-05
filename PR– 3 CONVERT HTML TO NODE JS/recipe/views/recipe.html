@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Recipe</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-  <h1>Add New Recipe</h1>
-  <form action="/recipe/add" method="POST">
-    <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name" required><br>
-    
-    <label for="description">Description:</label><br>
-    <input type="text" id="description" name="description" required><br>
-    
-    <label for="preparationTime">Preparation Time:</label><br>
-    <input type="text" id="preparationTime" name="preparationTime" required><br>
-    
-    <label for="cookingTime">Cooking Time:</label><br>
-    <input type="text" id="cookingTime" name="cookingTime" required><br>
-    
-    <label for="imageUrl">Image URL:</label><br>
-    <input type="text" id="imageUrl" name="imageUrl" required><br>
-    
-    <label for="country">Country:</label><br>
-    <input type="text" id="country" name="country" required><br>
-    
-    <label for="veg">Vegetarian:</label><br>
-    <input type="checkbox" id="veg" name="veg"><br><br>
-    
-    <input type="submit" value="Add Recipe">
-  </form>
+    <div id="parent">
+        <form action="" method="post">
+            <input type="text" name="name">
+            <input type="text" name="desciption">
+            <input type="text" name="praparationTime">
+            <input type="text" name="cookingTime">
+            <input type="url"  name="imageUrl">
+            <select name="country">
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+            </select>
+            <select name="veg">
+                <option value="yes">true</option>
+                <option value="no">false</option>
+            </select>
+            <input type="submit">
+
+        </form>
+    </div>
 </body>
 </html>
