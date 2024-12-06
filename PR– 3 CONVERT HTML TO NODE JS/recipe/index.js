@@ -3,8 +3,8 @@ const path = require("path");
 const valid=require("./middleware/recipe.middleware")
 const app = express();
 
-app.set("views engine", "ejs");
-app.set("viwes", path.join(__dirname, "viwes"));
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -111,6 +111,5 @@ app.get("/recipe/filter",(req,res)=>{
     res.status(200).send(filterRecipe);
 });
 app.listen(8090,()=>{
-    console.log("listening on http://localhost:8090");
-    
-})
+    console.log("listening on 8090");
+});
