@@ -1,6 +1,6 @@
 const express = require("express")
 const path = require("path");
-const valid=require("./middleware/recipe.middleware")
+const valid = require("./middleware/recipe.middleware")
 const app = express();
 
 app.set("view engine", "ejs");
@@ -24,23 +24,23 @@ let initialRecipe = [
 
 let pd = initialRecipe.length + 1
 
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
     res.send("Welcome to the Recipe API.")
 })
 
-app.get("/recipe/all",(req,res)=>{
+app.get("/recipe/all", (req, res) => {
     res.send(initialRecipe)
 })
 
-app.get("/add",(req,res)=>{
+app.get("/add", (req, res) => {
     res.render("recipe")
 })
 
-app.get("/index",(req,res)=>{
+app.get("/index", (req, res) => {
     res.render("index")
 })
 
-app.post("/recipe/add",valid,(req,res)=>{
+app.post("/recipe/add", valid, (req, res) => {
     try {
         const {
             name,
@@ -50,8 +50,8 @@ app.post("/recipe/add",valid,(req,res)=>{
             imageUrl,
             country,
             veg
-        }=req.body
-    
+        } = req.body
+
         const newRecipe = {
             name,
             description,
@@ -60,17 +60,17 @@ app.post("/recipe/add",valid,(req,res)=>{
             imageUrl,
             country,
             veg,
-            id:pd++,
+            id: pd++,
         };
         initialRecipe.push(newRecipe);
         res.status(200).send(initialRecipe);
-    
+
     } catch (error) {
         res.status(400).send("can not add recipe");
     }
 });
 
-app.patch("/recipe/update/:id",(req,res)=>{
+app.patch("/recipe/update/:id", (req, res) => {
     const { id } = req.params;
     const updateRecipe = req.body;
 
@@ -91,7 +91,7 @@ app.patch("/recipe/update/:id",(req,res)=>{
 
 })
 
-app.delete("/recipe/delete/:id",(req,res)=>{
+app.delete("/recipe/delete/:id", (req, res) => {
     const { id } = req.params;
     const index = initialRecipe.findIndex((ele) => ele.id == id);
     if (index === -1) {
@@ -101,15 +101,15 @@ app.delete("/recipe/delete/:id",(req,res)=>{
     res.status(200).send(initialRecipe);
 });
 
-app.get("/recipe/filter",(req,res)=>{
+app.get("/recipe/filter", (req, res) => {
     const { veg, sort, country } = req.query;
     let filterRecipe = [...initialRecipe];
-    if (veg!== undefined) filterRecipe = filterRecipe.filter((ele) => ele.veg === veg);
+    if (veg !== undefined) filterRecipe = filterRecipe.filter((ele) => ele.veg === veg);
     if (country) filterRecipe = filterRecipe.filter((ele) => ele.country === country);
     if (sort === "lth") filterRecipe.sort((a, b) => a.cookingTime - b.cookingTime);
     else if (sort === "htl") filterRecipe.sort((a, b) => b.cookingTime - a.cookingTime);
     res.status(200).send(filterRecipe);
 });
-app.listen(8090,()=>{
+app.listen(8090, () => {
     console.log("listening on 8090");
 });
