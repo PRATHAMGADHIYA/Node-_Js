@@ -9,28 +9,20 @@ const getbook=async(req,res)=>{
    }
 }
 const getbookById=async(req,res)=>{
-  //  try {
-  //    const {bookId}=req.params;
-  //    let book = await Books.findById(bookId)
-  //    if(!book){
-  //      return res.status(404).json({message:"Book not found"})
-  //    }
-  //   else{
-  //     res.stauts(200).json(book)
-  //   }
-  //  } catch (error) {
-  //   res.stauts(500).json()
-  //  }
-
-  try {
-    const { id } = req.params;
-    const book = await Books.findById(id);
-    if (!book) return res.status(404).json();
-    res.status(200).json(book);
-  } catch (error) {
-    res.status(500).json();
-  }
-}
+   try {
+     const {bookId}=req.params;
+     let book = await Books.findById(bookId)
+     if(!book){
+       return res.status(404).json({message:"Book not found"})
+     }
+    else{
+      res.stauts(200).json(book)
+    }
+   } catch (error) {
+    res.stauts(500).json()
+   }
+  
+};
 
 const deletebook=async(req,res)=>{
     try {
