@@ -7,7 +7,7 @@ UserRouter.get("/login",getloginPage)
 UserRouter.get("/signup",getSignupPage)
 
 UserRouter.get("/",getUser)
-UserRouter.post("/",createUser)
-UserRouter.post("/",loginUser)
+UserRouter.post("/user",createUser)
+UserRouter.post("/user",loginUser)
 
 module.exports=UserRouter;
