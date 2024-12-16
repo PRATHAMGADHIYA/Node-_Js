@@ -48,6 +48,8 @@ const deletemovieById=async(req,res)=>{
    } catch (error) {
     res.status(500).json(error)
    }
+
+   
 }
 
 module.exports={createmovie,getmovie,getmovieById,updatemovieById,deletemovieById}
