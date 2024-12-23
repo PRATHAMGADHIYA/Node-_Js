@@ -28,8 +28,7 @@ const getmovieById=async(req,res)=>{
     } catch (error) {
      res.status(500).json(error);   
     }
-}
-
+} 
 const updatemovieById=async(req,res)=>{
     try {
         const {movieId}=req.params;
@@ -46,7 +45,7 @@ const deletemovieById=async(req,res)=>{
      const movie=await movie.findByIdAndDelete(movieId);
      res.status(200).json(movie)
    } catch (error) {
-    res.status(500).json(error)
+    res.status(500).json(error) 
    }
 
    

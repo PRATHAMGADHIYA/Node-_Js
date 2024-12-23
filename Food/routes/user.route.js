@@ -7,5 +7,4 @@ userRouter.get("/login",loginuser);
 userRouter.get("/signup",signupuser);
 userRouter.get("/",getalluser);
 
-
-module.exports=userRouter;      
+module.exports=userRouter;
